@@ -9,7 +9,7 @@
   "labels": {
     "owner": "tva",
     "HAPROXY_GROUP": "external",
-    "HAPROXY_0_VHOST": "voting.foo.com"
+    "HAPROXY_0_VHOST": "vote.thevotingapp.com"
   },
   "container": {
     "type": "DOCKER",
