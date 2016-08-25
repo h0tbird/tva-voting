@@ -14,7 +14,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "softonic/tva-voting:latest",
+      "image": "internal-registry-sys.marathon:5000/tva/voting:latest",
       "network": "BRIDGE",
       "portMappings": [
         {
