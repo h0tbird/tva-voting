@@ -16,7 +16,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "katosys/voting:latest",
+      "image": "katosys/tva-voting:latest",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 80, "hostPort": 0, "servicePort": 10010 }
