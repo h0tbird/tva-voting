@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build --rm -t softonic/tva-voting .
+docker build --rm -t katosys/tva-voting .
