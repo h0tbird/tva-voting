@@ -3,7 +3,7 @@
   metadata:
     name: tva-voting
   spec:
-    selector: app == 'voting'
+    selector: group == 'tva' && app == 'voting'
     ingress:
     - action: allow
       protocol: tcp
