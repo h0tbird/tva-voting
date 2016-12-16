@@ -1,0 +1,14 @@
+- apiVersion: v1
+  kind: policy
+  metadata:
+    name: tva-voting
+  spec:
+    selector: app == 'voting'
+    ingress:
+    - action: allow
+      protocol: tcp
+      destination:
+        ports:
+        - 80
+    egress:
+    - action: allow
