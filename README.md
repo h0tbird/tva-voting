@@ -3,7 +3,7 @@
 
 # tva-voting
 
-[![Build Status](https://travis-ci.org/katosys/tva-voting.svg?branch=master)](https://travis-ci.org/katosys/tva-voting)
+[![Build Status](https://travis-ci.org/h0tbird/tva-voting.svg?branch=master)](https://travis-ci.org/h0tbird/tva-voting)
 
 Web application (python). Every vote counts!
 
