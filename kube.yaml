@@ -14,6 +14,13 @@ spec:
       - name: voting
         image: quay.io/h0tbird/tva-voting:latest
         imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
 ---
 kind: Service
 apiVersion: v1
