@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: deployment-voting
+spec:
+  replicas: 2
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: voting
+    spec:
+      containers:
+      - name: voting
+        image: quay.io/h0tbird/tva-voting:latest
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: voting-tva
+spec:
+  ports:
+    - name: voting
+      port: 80
+      targetPort: 80
+  selector:
+    app: voting
+  type: LoadBalancer
