@@ -13,6 +13,7 @@ spec:
       containers:
       - name: voting
         image: quay.io/h0tbird/tva-voting:latest
+        imagePullPolicy: Always
 ---
 kind: Service
 apiVersion: v1
