@@ -41,5 +41,5 @@ pipelines:
           #-------------------------
 
           - apt-get install -y git
-          - git clone https://github.com/h0tbird/the-voting-app.git
+          - git clone git@bitbucket.org:softonic-development/the-voting-app.git
           - ./the-voting-app/bin/deploy-k8s
