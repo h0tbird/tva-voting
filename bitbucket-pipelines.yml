@@ -23,6 +23,7 @@ pipelines:
           # Activate service account:
           #---------------------------
 
-          - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 --decode --ignore-garbage > gcloud-svcaccount-key.json
-          - gcloud auth activate-service-account --key-file gcloud-svcaccount-key.json
+          - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -di > key.json
+          - gcloud auth activate-service-account --key-file key.json
           - gcloud config set project ${GCLOUD_PROJECT}
+          - gcloud components install kubectl
