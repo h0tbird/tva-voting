@@ -26,4 +26,4 @@ pipelines:
           - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -di > key.json
           - gcloud auth activate-service-account --key-file key.json
           - gcloud config set project ${GCLOUD_PROJECT}
-          - gcloud components install kubectl
+          - gcloud container clusters get-credentials kube-1 ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
