@@ -40,5 +40,6 @@ pipelines:
           # Deploy the new version:
           #-------------------------
 
+          - apt-get install -y git
           - git clone https://github.com/h0tbird/the-voting-app.git
           - ./the-voting-app/bin/deploy-k8s
