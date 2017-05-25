@@ -5,8 +5,22 @@ pipelines:
   default:
     - step:
         script:
+
+          #---------------------
+          # Build tag and push:
+          #---------------------
+
           - export IMAGE_NAME=quay.io/softonic/tva-voting
           - docker build -t ${IMAGE_NAME}:${BITBUCKET_COMMIT::6} .
           - docker tag ${IMAGE_NAME}:${BITBUCKET_COMMIT::6} ${IMAGE_NAME}:latest
           - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} quay.io
           - docker push ${IMAGE_NAME}
+
+          #-------------------
+          # Google cloud SDK:
+          #-------------------
+
+          - curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-156.0.0-linux-x86_64.tar.gz
+          - tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp
+          - /tmp/google-cloud-sdk/install.sh -q
+          - source /tmp/google-cloud-sdk/path.bash.inc
