@@ -35,3 +35,10 @@ pipelines:
           - export HELM_GET='https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get'
           - wget -q -O - ${HELM_GET} | sed 's/\<sudo\>//g' | bash
           - helm init --upgrade
+
+          #-------------------------
+          # Deploy the new version:
+          #-------------------------
+
+          - git clone https://github.com/h0tbird/the-voting-app.git
+          - ./the-voting-app/bin/deploy-k8s
