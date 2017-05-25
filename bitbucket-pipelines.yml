@@ -23,7 +23,6 @@ pipelines:
           # Activate service account:
           #---------------------------
 
-          - gcloud init
           - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 --decode --ignore-garbage > gcloud-svcaccount-key.json
           - gcloud auth activate-service-account --key-file gcloud-svcaccount-key.json
           - gcloud config set project ${GCLOUD_PROJECT}
