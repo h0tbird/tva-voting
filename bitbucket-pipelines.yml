@@ -1,6 +1,6 @@
 options:
   docker: true
-image: google/cloud-sdk
+  #image: google/cloud-sdk
 clone:
   depth: 1
 
@@ -40,7 +40,7 @@ pipelines:
           # Deploy the new version:
           #-------------------------
 
-          - apt-get install -y git
+                #- apt-get install -y git
           - id
           - pwd
           - echo $HOME
@@ -49,7 +49,7 @@ pipelines:
           - ls -la ~/.ssh
           - cat ~/.ssh/config
           - cat ~/.ssh/known_hosts
-          - sed -i '/104.192.143.2/d' ~/.ssh/known_hosts
+            #- sed -i '/104.192.143.2/d' ~/.ssh/known_hosts
           - cat ~/.ssh/known_hosts
           - cat /etc/ssh/ssh_config
           - ls -la /opt/atlassian/pipelines/agent/data
