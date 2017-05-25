@@ -51,6 +51,6 @@ pipelines:
           - cat /opt/atlassian/pipelines/agent/data/..data/known_hosts
           - ls -la /opt/atlassian/pipelines/agent/data/..data/id_rsa
           - cat /opt/atlassian/pipelines/agent/data/id_rsa
-          - ssh -T git@bitbucket.org
+          - ssh -vvvT git@bitbucket.org
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
           - ./the-voting-app/bin/deploy-k8s
