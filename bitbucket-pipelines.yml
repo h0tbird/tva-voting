@@ -43,12 +43,13 @@ pipelines:
           - apt-get install -y git
           - id
           - pwd
+          - echo $HOME
           - ls -la /root
           - ls -la ~/
           - ls -la ~/.ssh
           - cat ~/.ssh/config
           - cat ~/.ssh/known_hosts
-          - sed -i 's/,104.192.143.2//g' ~/.ssh/known_hosts
+          - sed -i 's/104.192.143.2/d' ~/.ssh/known_hosts
           - cat ~/.ssh/known_hosts
           - cat /etc/ssh/ssh_config
           - ls -la /opt/atlassian/pipelines/agent/data
