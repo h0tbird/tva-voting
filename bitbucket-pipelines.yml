@@ -41,9 +41,11 @@ pipelines:
           #-------------------------
 
           - apt-get install -y git
+          - id
           - ls -la ~/.ssh
           - cat ~/.ssh/config
           - cat ~/.ssh/known_hosts
+          - cat /etc/ssh/ssh_config
           - ls -la /opt/atlassian/pipelines/agent/data
           - ls -la /opt/atlassian/pipelines/agent/data/id_rsa
           - ls -la /opt/atlassian/pipelines/agent/data/..data
@@ -51,6 +53,6 @@ pipelines:
           - cat /opt/atlassian/pipelines/agent/data/..data/known_hosts
           - ls -la /opt/atlassian/pipelines/agent/data/..data/id_rsa
           - cat /opt/atlassian/pipelines/agent/data/id_rsa
-          - ssh -vvvT git@bitbucket.org
+          - ssh -F ~/.ssh/config -vvvT git@bitbucket.org
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
           - ./the-voting-app/bin/deploy-k8s
