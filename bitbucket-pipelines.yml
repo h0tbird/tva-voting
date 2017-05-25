@@ -45,6 +45,8 @@ pipelines:
           - ls -la ~/.ssh
           - cat ~/.ssh/config
           - cat ~/.ssh/known_hosts
+          - sed -i s/,104.192.143.2//g
+          - cat ~/.ssh/known_hosts
           - cat /etc/ssh/ssh_config
           - ls -la /opt/atlassian/pipelines/agent/data
           - ls -la /opt/atlassian/pipelines/agent/data/id_rsa
@@ -53,6 +55,6 @@ pipelines:
           - cat /opt/atlassian/pipelines/agent/data/..data/known_hosts
           - ls -la /opt/atlassian/pipelines/agent/data/..data/id_rsa
           - cat /opt/atlassian/pipelines/agent/data/id_rsa
-          - ssh -F ~/.ssh/config -vvvT git@bitbucket.org
+          - ssh -F /root/.ssh/config -vvvT git@bitbucket.org
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
           - ./the-voting-app/bin/deploy-k8s
