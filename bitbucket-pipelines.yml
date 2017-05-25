@@ -48,6 +48,7 @@ pipelines:
           - ls -la /opt/atlassian/pipelines/agent/data/id_rsa
           - ls -la /opt/atlassian/pipelines/agent/data/..data
           - ls -la /opt/atlassian/pipelines/agent/data/..data/
+          - cat /opt/atlassian/pipelines/agent/data/..data/known_hosts
           - ls -la /opt/atlassian/pipelines/agent/data/..data/id_rsa
           - cat /opt/atlassian/pipelines/agent/data/id_rsa
           - ssh -T git@bitbucket.org
