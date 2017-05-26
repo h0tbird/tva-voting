@@ -34,3 +34,4 @@ pipelines:
 
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
           - helm init --client-only && cd the-voting-app && ./bin/deploy-k8s chart
+          - helm get values thevotingapp
