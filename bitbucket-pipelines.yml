@@ -23,7 +23,7 @@ pipelines:
           # Setup google cloud credentials:
           #---------------------------------
 
-          - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -di > key.json
+          - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -d > key.json
           - gcloud auth activate-service-account --key-file key.json
           - gcloud config set project ${GCLOUD_PROJECT}
           - gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
@@ -32,8 +32,6 @@ pipelines:
           # Install Helm:
           #---------------
 
-          #- export HELM_GET='https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get'
-          #- wget -q -O - ${HELM_GET} | sed 's/\<sudo\>//g' | bash
           - helm init --upgrade
 
           #-------------------------
