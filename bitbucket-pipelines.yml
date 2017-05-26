@@ -28,11 +28,11 @@ pipelines:
           - gcloud config set project ${GCLOUD_PROJECT}
           - gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
 
-          #---------------
-          # Install Helm:
-          #---------------
+          #------------------
+          # Initialize Helm:
+          #------------------
 
-          - helm init --upgrade
+          - helm init
 
           #-------------------------
           # Deploy the new version:
