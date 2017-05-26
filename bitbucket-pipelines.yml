@@ -1,6 +1,6 @@
 options:
   docker: true
-  #image: google/cloud-sdk
+  image: softonic/cloud-sdk
 clone:
   depth: 1
 
@@ -13,52 +13,32 @@ pipelines:
           # Build tag and push the container:
           #-----------------------------------
 
-                #- export IMAGE_NAME='quay.io/softonic/tva-voting'
-                #- docker build -t ${IMAGE_NAME}:${BITBUCKET_COMMIT::6} .
-                #- docker tag ${IMAGE_NAME}:${BITBUCKET_COMMIT::6} ${IMAGE_NAME}:latest
-                #- docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} quay.io
-                #- docker push ${IMAGE_NAME}
+          - export IMAGE_NAME='quay.io/softonic/tva-voting'
+          - docker build -t ${IMAGE_NAME}:${BITBUCKET_COMMIT::6} .
+          - docker tag ${IMAGE_NAME}:${BITBUCKET_COMMIT::6} ${IMAGE_NAME}:latest
+          - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} quay.io
+          - docker push ${IMAGE_NAME}
 
           #---------------------------------
           # Setup google cloud credentials:
           #---------------------------------
 
-                #- echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -di > key.json
-                #- gcloud auth activate-service-account --key-file key.json
-                #- gcloud config set project ${GCLOUD_PROJECT}
-                #- gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
+          - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -di > key.json
+          - gcloud auth activate-service-account --key-file key.json
+          - gcloud config set project ${GCLOUD_PROJECT}
+          - gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
 
           #---------------
           # Install Helm:
           #---------------
 
-                #- export HELM_GET='https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get'
-                #- wget -q -O - ${HELM_GET} | sed 's/\<sudo\>//g' | bash
-                #- helm init --upgrade
+          #- export HELM_GET='https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get'
+          #- wget -q -O - ${HELM_GET} | sed 's/\<sudo\>//g' | bash
+          - helm init --upgrade
 
           #-------------------------
           # Deploy the new version:
           #-------------------------
 
-                #- apt-get install -y git
-          - id
-          - pwd
-          - echo $HOME
-          - ls -la /root
-          - ls -la ~/
-          - ls -la ~/.ssh
-          - cat ~/.ssh/config
-          - cat ~/.ssh/known_hosts
-            #- sed -i '/104.192.143.2/d' ~/.ssh/known_hosts
-          - cat ~/.ssh/known_hosts
-          - cat /etc/ssh/ssh_config
-          - ls -la /opt/atlassian/pipelines/agent/data
-          - ls -la /opt/atlassian/pipelines/agent/data/id_rsa
-          - ls -la /opt/atlassian/pipelines/agent/data/..data
-          - ls -la /opt/atlassian/pipelines/agent/data/..data/
-          - cat /opt/atlassian/pipelines/agent/data/..data/known_hosts
-          - ls -la /opt/atlassian/pipelines/agent/data/..data/id_rsa
-          - cat /opt/atlassian/pipelines/agent/data/id_rsa
-          - ssh -F ~/.ssh/config -vvvT git@bitbucket.org
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
           - ./the-voting-app/bin/deploy-k8s
