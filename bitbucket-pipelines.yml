@@ -33,4 +33,4 @@ pipelines:
           #-------------------------
 
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
-          - helm init && ./the-voting-app/bin/deploy-k8s
+          - helm init && cd the-voting-app && ./bin/deploy-k8s chart
