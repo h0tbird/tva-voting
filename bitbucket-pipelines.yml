@@ -1,6 +1,6 @@
 options:
   docker: true
-  image: softonic/cloud-sdk
+image: softonic/cloud-sdk
 clone:
   depth: 1
 
