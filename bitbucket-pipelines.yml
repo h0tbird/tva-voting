@@ -28,15 +28,9 @@ pipelines:
           - gcloud config set project ${GCLOUD_PROJECT}
           - gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
 
-          #------------------
-          # Initialize Helm:
-          #------------------
-
-          - helm init
-
           #-------------------------
           # Deploy the new version:
           #-------------------------
 
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
-          - ./the-voting-app/bin/deploy-k8s
+          - helm init && ./the-voting-app/bin/deploy-k8s
