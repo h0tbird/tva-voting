@@ -13,20 +13,20 @@ pipelines:
           # Build tag and push the container:
           #-----------------------------------
 
-          - export IMAGE_NAME='quay.io/softonic/tva-voting'
-          - docker build -t ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} .
-          - docker tag ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} ${IMAGE_NAME}:latest
-          - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} quay.io
-          - docker push ${IMAGE_NAME}
+                #- export IMAGE_NAME='quay.io/softonic/tva-voting'
+                #- docker build -t ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} .
+                #- docker tag ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} ${IMAGE_NAME}:latest
+                #- docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} quay.io
+                #- docker push ${IMAGE_NAME}
 
           #---------------------------------
           # Setup google cloud credentials:
           #---------------------------------
 
-          - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -d > key.json
-          - gcloud auth activate-service-account --key-file key.json
-          - gcloud config set project ${GCLOUD_PROJECT}
-          - gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
+                #- echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -d > key.json
+                #- gcloud auth activate-service-account --key-file key.json
+                #- gcloud config set project ${GCLOUD_PROJECT}
+                #- gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
 
           #-------------------------
           # Deploy the new version:
@@ -34,5 +34,6 @@ pipelines:
 
           - git clone git@bitbucket.org:softonic-development/the-voting-app.git
           - cd the-voting-app && ls -la && git config --list
+          - git remote -v
           - helm init --client-only && cd the-voting-app && set -x; ./bin/deploy-k8s chart
           - helm get values thevotingapp
