@@ -13,11 +13,11 @@ pipelines:
           # Build tag and push the container:
           #-----------------------------------
 
-          #- export IMAGE_NAME='quay.io/softonic/tva-voting'
-          #- docker build -t ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} .
-          #- docker tag ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} ${IMAGE_NAME}:latest
-          #- docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} quay.io
-          #- docker push ${IMAGE_NAME}
+          - export IMAGE_NAME='quay.io/softonic/tva-voting'
+          - docker build -t ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} .
+          - docker tag ${IMAGE_NAME}:${BITBUCKET_COMMIT::7} ${IMAGE_NAME}:latest
+          - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} quay.io
+          - docker push ${IMAGE_NAME}
 
           #---------------------------------
           # Setup google cloud credentials:
