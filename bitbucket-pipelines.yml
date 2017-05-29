@@ -32,8 +32,7 @@ pipelines:
           # Deploy the new version:
           #-------------------------
 
-          - git remote -v
           - helm init --client-only
           - helm registry pull quay.io/softonic/thevotingapp
-          - ./bin/deploy-k8s softonic_thevotingapp_*
+          - ./bin/deploy-k8s softonic_thevotingapp_0.1.0
           - helm get values thevotingapp
