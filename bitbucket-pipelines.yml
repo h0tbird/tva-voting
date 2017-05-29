@@ -34,4 +34,6 @@ pipelines:
 
           - git remote -v
           - helm init --client-only
+          - helm registry pull quay.io/softonic/thevotingapp
+          - ./bin/deploy-k8s softonic_thevotingapp_*
           - helm get values thevotingapp
