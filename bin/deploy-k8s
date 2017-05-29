@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 #------------------------------------------------------------------------------
 # helmSet produces dynamic helm --set arguments (example below):
 #
