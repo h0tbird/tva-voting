@@ -23,16 +23,15 @@ pipelines:
           # Setup google cloud credentials:
           #---------------------------------
 
-          #- echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -d > key.json
-          #- gcloud auth activate-service-account --key-file key.json
-          #- gcloud config set project ${GCLOUD_PROJECT}
-          #- gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
+          - echo ${GCLOUD_SVCACCOUNT_KEY} | base64 -d > key.json
+          - gcloud auth activate-service-account --key-file key.json
+          - gcloud config set project ${GCLOUD_PROJECT}
+          - gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone europe-west1-b --project ${GCLOUD_PROJECT}
 
           #-------------------------
           # Deploy the new version:
           #-------------------------
 
-          - pwd
-          - ls -la
+          - git remote -v
           - helm init --client-only
           - helm get values thevotingapp
